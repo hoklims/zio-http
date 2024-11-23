@@ -456,21 +456,3 @@ lazy val benchmarks = project
     )
   )
   .dependsOn(root)
-
-lazy val zioHttpGen = project
-  .in(file("zio-http-gen"))
-  .settings(stdSettings("zio-http-gen"))
-  .settings(publishSetting(true))
-  .settings(
-    libraryDependencies ++= Seq(
-      `zio`,
-      `zio-test`,
-      `zio-test-sbt`,
-      // Add JMH dependencies for benchmarking
-      "org.openjdk.jmh" % "jmh-core" % "1.37",
-      "org.openjdk.jmh" % "jmh-generator-annprocess" % "1.37"
-    ),
-    // Enable JMH plugin
-    enablePlugins(JmhPlugin)
-  )
-  .dependsOn(zioHttpJVM)
